@@ -31,10 +31,12 @@ e = Item(5,5,2)
 
 items = [a,b,c,d,e]
 
-r1 = Result()
-r1.append(a)
-r1.append(b)
-print(r1.getWeight())
+results = []
+
+for i in range(1,2):
+	print(i)
+
+
 
 # for item in items:
 # 	print(item.i)
