@@ -1,3 +1,4 @@
+import time
 
 
 def is_double(c):
@@ -13,31 +14,39 @@ def is_double(c):
 	return 0;
 
 
-c=0
+count=0
+t = 1
 
-def proc(str):
-	global c
-	c+=1
+def proc(str,index):
+	global count
+	global t
+	# count+=1
 
-	for i in range(0,len(str)-1):
+	for i in range(index,len(str)-1):
 		dbl=str[i]+str[i+1]
 		# print(dbl)
 		if(is_double(dbl)):
-			# print(str[i+2:len(str)]+' '+dbl )
-			# print('dbl: ', dbl)
-			
-			c+=1
-			proc(str[i+2:len(str)])
+			start = str[i+2:len(str)]
+			print(start+' - '+dbl )
 
-
+			count+=1
+			t*=2
+			proc(str,i+2)
 
 
 
 # x = input()
 x = '872816217231'
-c=0
-proc(x)
-print(c)
+# x = '8712517412'
+count=1
+
+# start_time = time.time()
+# time.sleep(1)
+proc(x,0)
+
+# print("--- %s seconds ---" % (time.time() - start_time))
+
+print(count)
 
 
 
