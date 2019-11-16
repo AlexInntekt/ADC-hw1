@@ -6,17 +6,19 @@
 
 using namespace std;
 
+//there is at least on combination;
+// the worst case when there are no 1s and 2s
 int count = 1;
 
+
+//check if its number between 11-24 excepting the 0 digit
 int is_double(char *c)
 {
-	// cout << strlen(c);
-
 	//convert from char to int
 	int a = (c[0] -'0');
 	int b = (c[1] -'0');
-	// cout << c[0] <<" " << a ;
 
+	//make sure it has 2 digits
 	if(strlen(c)==2)
 	{
 		if(a==1 || (a==2 && b<5))
@@ -32,7 +34,7 @@ int is_double(char *c)
 	return 0;
 }
 
-
+//recursive master function!
 void proc(char *str, int index)
 {
 	for(int i=index; i<(strlen(str)-1);i++)
@@ -58,7 +60,11 @@ void run()
 
 	cin >> input;
 
+	//there is at least on combination;
+	// the worst case when there are no 1s and 2s:
 	count = 1;
+
+	//start processing the input:
 	proc(input,0);
 
 	cout << count;

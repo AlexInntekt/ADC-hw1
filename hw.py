@@ -34,10 +34,8 @@ def proc(str,index):
 			proc(str,i+2)
 
 
-
-# x = input()
-x = '872816217231'
-# x = '8712517412'
+#there is at least on combination;
+# the worst case when there are no 1s and 2s
 count=1
 
 # start_time = time.time()
