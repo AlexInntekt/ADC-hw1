@@ -46,16 +46,6 @@ void proc(char *str, int index)
 		}
 	}
 
-	// for i in range(index,len(str)-1):
-	// 	dbl=str[i]+str[i+1]
-	// 	# print(dbl)
-	// 	if(is_double(dbl)):
-	// 		start = str[i+2:len(str)]
-	// 		print(start+' - '+dbl )
-
-	// 		count+=1
-	// 		t*=2
-	// 		proc(str,i+2)
 }
 	
 
@@ -68,6 +58,7 @@ void run()
 
 	cin >> input;
 
+	count = 1;
 	proc(input,0);
 
 	cout << count;
@@ -78,7 +69,13 @@ void run()
 int main()
 {
 	cout << "__________\n main()\n\n";
-	run();
+
+	while(1)
+	{
+		run();
+		cout << "\n\n ________________\n\n\n";
+	}
+	
 
 	cout << "\n\n";
 }
