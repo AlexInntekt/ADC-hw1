@@ -13,18 +13,21 @@ def is_double(c):
 	return 0;
 
 
-
+c=0
 
 def proc(str):
+	global c
+	c+=1
 
 	for i in range(0,len(str)-1):
 		dbl=str[i]+str[i+1]
 		# print(dbl)
 		if(is_double(dbl)):
-			print(str[i+2:len(str)]+' '+dbl )
+			# print(str[i+2:len(str)]+' '+dbl )
 			# print('dbl: ', dbl)
-			# proc(str[0:i+1])
-
+			
+			c+=1
+			proc(str[i+2:len(str)])
 
 
 
@@ -32,8 +35,9 @@ def proc(str):
 
 # x = input()
 x = '872816217231'
-
+c=0
 proc(x)
+print(c)
 
 
 
