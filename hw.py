@@ -12,20 +12,31 @@ def is_double(c):
 
 	return 0;
 
+
+
+
 def proc(str):
+
 	for i in range(0,len(str)-1):
 		dbl=str[i]+str[i+1]
+		# print(dbl)
 		if(is_double(dbl)):
-			print(dbl)
-		
-
-while(True):
-	x = input()
-
-	res = proc(x)
-
-	print(res,'\n _________________\n')
+			print(str[i+2:len(str)]+' '+dbl )
+			# print('dbl: ', dbl)
+			# proc(str[0:i+1])
 
 
+
+
+
+
+# x = input()
+x = '872816217231'
+
+proc(x)
+
+
+
+# print(res,'\n _________________\n')
 
 
