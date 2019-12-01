@@ -3,6 +3,8 @@
 #include <string.h>
 #include <string>
 #include <cstring>
+#include <time.h>
+#include <fstream>
 
 using namespace std;
 
@@ -50,24 +52,56 @@ void proc(char *str, int index)
 
 }
 	
-
-
-
-void run()
+void readFile()
 {
+	fstream fIn;
+	fIn.open( "papyrus.in", ios::in );
 
-	char input[30];
+	if( fIn.is_open() )
+	{
+	  string s;
 
-	cin >> input;
+	  while( getline( fIn, s ) )
+	  {
+	    cout << s << endl;
+	    // Tokenize s here into columns (probably on spaces)
+	  }
+	  fIn.close();
+
+	}
+	else
+	  cout << "Error opening file " << errno << endl;
+
+
+}
+
+
+void run(string s)
+{
+	// FILE* f = fopen("papyrus.in", "r");
+
+
+	clock_t start, end;
+
+	start = clock();
 
 	//there is at least on combination;
 	// the worst case when there are no 1s and 2s:
 	count = 1;
 
+	char input[s.size() +1];
+    strcpy(input, s.c_str());
+
 	//start processing the input:
 	proc(input,0);
 
 	cout << count;
+
+	end = clock();
+
+	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+
+	cout << "\n\n Duration: " << duration_sec;
 
 	// cout << is_double(input);
 }
@@ -76,11 +110,33 @@ int main()
 {
 	cout << "__________\n main()\n\n";
 
-	while(1)
+	fstream fIn;
+	fIn.open( "papyrus.in", ios::in );
+
+	if( fIn.is_open() )
 	{
-		run();
-		cout << "\n\n ________________\n\n\n";
+	  string s;
+
+	  while( getline( fIn, s ) )
+	  {
+	    cout << s << endl;
+
+	    
+
+	    run(s);
+	    // Tokenize s here into columns (probably on spaces)
+	  }
+	  fIn.close();
+
 	}
+	else
+	  cout << "Error opening file " << errno << endl;
+
+
+	
+
+	cout << "\n\n ________________\n\n\n";
+	
 	
 
 	cout << "\n\n";
