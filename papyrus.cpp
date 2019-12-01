@@ -75,6 +75,13 @@ void readFile()
 
 }
 
+void writeFile(int res)
+{
+	ofstream myfile;
+	  myfile.open ("papyrus.out");
+	  myfile << res;
+	  myfile.close();
+}
 
 void run(string s)
 {
@@ -97,6 +104,10 @@ void run(string s)
 
 	cout << count;
 
+	writeFile(count);
+
+
+
 	end = clock();
 
 	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
@@ -105,6 +116,8 @@ void run(string s)
 
 	// cout << is_double(input);
 }
+
+
 
 int main()
 {
