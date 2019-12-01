@@ -23,7 +23,7 @@ int is_double(char *c)
 	//make sure it has 2 digits
 	if(strlen(c)==2)
 	{
-		if(a==1 || (a==2 && b<5))
+		if(a==1 || (a==2 && b<=6))
 		{
 			return 1;
 		}
@@ -113,7 +113,7 @@ void run(string s)
 	//start processing the input:
 	proc(input,0);
 
-	// cout << count;
+	cout << count;
 
 	writeFile(count);
 
