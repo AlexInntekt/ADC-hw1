@@ -45,7 +45,7 @@ int fib(int n)
    return fib(n-1) + fib(n-2); 
 } 
 
-void proc(char *str, int index)
+int proc(char *str, int index)
 {
 	for(int i=index; i<(strlen(str)-1);i++)
 	{
@@ -64,6 +64,11 @@ void proc(char *str, int index)
 				count*=fib(additions+3);
 				additions=-1;
 			}
+		}
+
+		if((str[i]!='1')&&(str[i]!='2')&&(str[i+1]=='0'))
+		{
+			return 1;
 		}
 
 
@@ -89,7 +94,7 @@ void proc(char *str, int index)
 	}
 
 
-
+	return 0;
 }
 	
 void readFile()
@@ -140,10 +145,15 @@ void run(string s)
     strcpy(input, s.c_str());
 
 	//start processing the input:
-	proc(input,0);
+	int res=proc(input,0);
+
+	if(res==1)
+	{
+		count=0;
+		cout<<"Orphan 0 detected!";
+	}
 
 	cout << count;
-
 	writeFile(count);
 
 
