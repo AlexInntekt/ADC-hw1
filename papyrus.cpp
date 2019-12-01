@@ -52,10 +52,10 @@ void proc(char *str, int index)
 		char dbl [2] = {str[i] , str[i+1] };
 
 
-		// if(str[i]=='0')
-		// {
-		// 	count -= 1;
-		// }
+		if(str[i]=='0')
+		{
+			count -= 1;
+		}
 
 		if(is_double(dbl)==1)
 		{
@@ -71,13 +71,22 @@ void proc(char *str, int index)
 			}
 		}
 
-		cout << additions << " " << count  << "\n";
+		// cout << additions << " " << count  << "\n";
 
 		if(count>mod)
 		{
 			count = count % mod;
 		}
 
+
+		if(i+1==(strlen(str)-1))
+		{
+			if(additions!=-1)
+			{
+				count*=fib(additions+3);
+				additions=-1;
+			}
+		}
 		
 
 	}
