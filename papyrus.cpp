@@ -63,7 +63,7 @@ void readFile()
 
 	  while( getline( fIn, s ) )
 	  {
-	    cout << s << endl;
+	    // cout << s << endl;
 	    // Tokenize s here into columns (probably on spaces)
 	  }
 	  fIn.close();
@@ -102,7 +102,7 @@ void run(string s)
 	//start processing the input:
 	proc(input,0);
 
-	cout << count;
+	// cout << count;
 
 	writeFile(count);
 
@@ -112,7 +112,7 @@ void run(string s)
 
 	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
 
-	cout << "\n\n Duration: " << duration_sec;
+	// cout << "\n\n Duration: " << duration_sec;
 
 	// cout << is_double(input);
 }
@@ -121,7 +121,7 @@ void run(string s)
 
 int main()
 {
-	cout << "__________\n main()\n\n";
+	// cout << "__________\n main()\n\n";
 
 	fstream fIn;
 	fIn.open( "papyrus.in", ios::in );
@@ -132,7 +132,7 @@ int main()
 
 	  while( getline( fIn, s ) )
 	  {
-	    cout << s << endl;
+	    // cout << s << endl;
 
 	    
 
@@ -146,12 +146,5 @@ int main()
 	  cout << "Error opening file " << errno << endl;
 
 
-	
-
-	cout << "\n\n ________________\n\n\n";
-	
-	
-
-	cout << "\n\n";
 }
 
