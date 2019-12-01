@@ -75,6 +75,7 @@
              else
                  echo "Test "$i" ......................... failed"
              fi
+             
          done
          echo "Total score: "$score
          rm exe

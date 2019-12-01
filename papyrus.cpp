@@ -43,6 +43,12 @@ void proc(char *str, int index)
 	{
 		char dbl [2] = {str[i] , str[i+1] };
 
+
+		if(str[i]=='0')
+		{
+			count -= 1;
+		}
+
 		if(is_double(dbl)==1)
 		{
 			count++;
