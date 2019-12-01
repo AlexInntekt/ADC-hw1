@@ -11,7 +11,6 @@ using namespace std;
 //there is at least on combination;
 // the worst case when there are no 1s and 2s
 long unsigned count = 1;
-int additions=-1;
 const long mod = 10000001;
 
 
@@ -38,12 +37,8 @@ int is_double(char *c)
 	return 0;
 }
 
-int fib(int n) 
-{ 
-   if (n <= 1) 
-      return n; 
-   return fib(n-1) + fib(n-2); 
-} 
+int localCount=0;
+
 
 void proc(char *str, int index)
 {
@@ -52,26 +47,31 @@ void proc(char *str, int index)
 		char dbl [2] = {str[i] , str[i+1] };
 
 
-		// if(str[i]=='0')
-		// {
-		// 	count -= 1;
-		// }
+		if(str[i]=='0')
+		{
+			count -= 1;
+		}
 
 		if(is_double(dbl)==1)
 		{
 
-			additions+=1;
+			if(localCount!=0)
+			{
+				count += count/2;
+			}
+			else
+			{
+				
+				count*=2;
+				
+			}
+
+			localCount+=1;
 		}
 		else
 		{
-			if(additions!=-1)
-			{
-				count*=fib(additions+3);
-				additions=-1;
-			}
+			localCount=0;
 		}
-
-		cout << additions << " " << count  << "\n";
 
 		if(count>mod)
 		{
@@ -161,9 +161,6 @@ void run(string s)
 int main()
 {
 	// cout << "__________\n main()\n\n";
-
-
-
 
 	fstream fIn;
 	fIn.open( "papyrus.in", ios::in );
