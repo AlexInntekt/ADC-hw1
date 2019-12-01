@@ -10,7 +10,7 @@ using namespace std;
 
 //there is at least on combination;
 // the worst case when there are no 1s and 2s
-int count = 1;
+long unsigned count = 1;
 
 
 //check if its number between 11-24 excepting the 0 digit
@@ -36,6 +36,8 @@ int is_double(char *c)
 	return 0;
 }
 
+int localCount=0;
+
 //recursive master function!
 void proc(char *str, int index)
 {
@@ -51,9 +53,23 @@ void proc(char *str, int index)
 
 		if(is_double(dbl)==1)
 		{
-			count++;
-			proc(str,i+2);
+
+			if(localCount!=0)
+			{
+				count += count/2;
+			}
+			else
+			{
+				count*=2;
+			}
+
+			localCount+=1;
 		}
+		else
+		{
+			localCount=0;
+		}
+
 	}
 
 	if((strlen(str)==1) && str[0]=='0')

@@ -60,12 +60,12 @@
              cp tests/$test_name papyrus.in
              timeout 0.8 ./exe
              aux_res=$?
-             #echo $aux_res
-             # if [ $aux_res != 0 ]
-             # then
-             #     echo "Test "$i" ......................... TLE"
-             #     continue
-             # fi
+             echo $aux_res
+             if [ $aux_res != 0 ]
+             then
+                 echo "Test "$i" ......................... TLE"
+                 continue
+             fi
              diff -w papyrus.out refs/$ref_name
              result=$?
              if [ $result -eq 0 ]
