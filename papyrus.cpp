@@ -50,6 +50,11 @@ void proc(char *str, int index)
 		}
 	}
 
+	if((strlen(str)==1) && str[0]=='0')
+	{
+		count = 0;
+	}
+
 }
 	
 void readFile()
