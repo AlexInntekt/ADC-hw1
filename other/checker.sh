@@ -58,9 +58,9 @@
              test_name="papyrus"$i".in"
              ref_name="papyrus"$i".out"
              cp tests/$test_name papyrus.in
-             timeout 0.8 ./exe
+             timeout 0.4 ./exe
              aux_res=$?
-             echo $aux_res
+             #echo $aux_res
              if [ $aux_res != 0 ]
              then
                  echo "Test "$i" ......................... TLE"
@@ -75,7 +75,6 @@
              else
                  echo "Test "$i" ......................... failed"
              fi
-             
          done
          echo "Total score: "$score
          rm exe
