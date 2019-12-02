@@ -38,6 +38,7 @@ int is_double(char *c)
 	return 0;
 }
 
+//return nth fibonacci number
 int fib(int n) 
 { 
    if (n <= 1) 
@@ -88,6 +89,7 @@ int proc(char *str, int index)
 
 	}
 
+    //if there is just one char and that is 0, then we have no letter
 	if((strlen(str)==1) && str[0]=='0')
 	{
 		count = 0;

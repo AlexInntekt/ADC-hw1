@@ -11,6 +11,7 @@ using namespace std;
 //there is at least on combination;
 // the worst case when there are no 1s and 2s
 long unsigned count = 1;
+int additions=-1;
 const long mod = 10000001;
 
 
@@ -37,58 +38,65 @@ int is_double(char *c)
 	return 0;
 }
 
-int localCount=0;
+//return nth fibonacci number
+int fib(int n) 
+{ 
+   if (n <= 1) 
+      return n; 
+   return fib(n-1) + fib(n-2); 
+} 
 
-
-void proc(char *str, int index)
+int proc(char *str, int index)
 {
 	for(int i=index; i<(strlen(str)-1);i++)
 	{
 		char dbl [2] = {str[i] , str[i+1] };
 
 
-		if(str[i]=='0')
-		{
-			count -= 1;
-		}
-
-		if(is_double(dbl)==1)
+		if((is_double(dbl)==1) && (str[i] != '0') && (str[i+1] != '0'))
 		{
 
-			if(localCount!=0)
-			{
-				count += count/2;
-			}
-			else
-			{
-				
-				count*=2;
-				
-			}
-
-			localCount+=1;
+			additions+=1;
 		}
 		else
 		{
-			localCount=0;
+			if(additions!=-1)
+			{
+				count*=fib(additions+3);
+				additions=-1;
+			}
 		}
 
-		if(count>mod)
+		if((str[i]!='1')&&(str[i]!='2')&&(str[i+1]=='0'))
 		{
-			count = count % mod;
+			return 1;
 		}
 
+
+		count = count % mod;
+		
+
+
+		if(i+1==(strlen(str)-1))
+		{
+			if(additions!=-1)
+			{
+				count*=fib(additions+3);
+				additions=-1;
+			}
+		}
 		
 
 	}
 
+    //if there is just one char and that is 0, then we have no letter
 	if((strlen(str)==1) && str[0]=='0')
 	{
 		count = 0;
 	}
 
 
-
+	return 0;
 }
 	
 void readFile()
@@ -139,10 +147,15 @@ void run(string s)
     strcpy(input, s.c_str());
 
 	//start processing the input:
-	proc(input,0);
+	int res=proc(input,0);
+
+	if(res==1)
+	{
+		count=0;
+		cout<<"Orphan 0 detected!";
+	}
 
 	cout << count;
-
 	writeFile(count);
 
 
@@ -161,6 +174,9 @@ void run(string s)
 int main()
 {
 	// cout << "__________\n main()\n\n";
+
+
+
 
 	fstream fIn;
 	fIn.open( "papyrus.in", ios::in );
